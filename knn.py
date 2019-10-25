@@ -14,7 +14,7 @@ import operator
 import numpy as np
 import matplotlib.pyplot as plt
 
-#подгружает файл с даты
+
 def load_dataset(filename, split):
     learn_data = []
     test_data = []
@@ -31,14 +31,14 @@ def load_dataset(filename, split):
 
     return learn_data, test_data
 
-# вычисляет эвклидово расстояние 
+#Calculatin Euclid distance
 def euclid(num1, num2, length):
     distance = 0
     for x in range(length):
         distance += np.power((num1[x] - num2[x]),2)
     return math.sqrt(distance)
 
-#вычисляет ближайших К соседей
+#calculating k-nearest-neighbors
 def get_neighbors(learn_data, test_instance, k):
     distances = []
     length = len(test_instance) - 1
@@ -62,7 +62,7 @@ def get_response(neighbors):
     sorted_votes = sorted(class_votes.items(), key=operator.itemgetter(1), reverse=True)
     return sorted_votes[0][0]
 
-# вычисляет точность
+#finding accuracy
 def get_accuracy(test_data, predict):
     correct = 0
     for x in range(len(test_data)):
@@ -221,7 +221,7 @@ iris = ["5.1,3.5,1.4,0.2,Iris-setosa",
 "6.2,3.4,5.4,2.3,Iris-virginica",
 "5.9,3.0,5.1,1.8,Iris-virginica"]
 
-#вывод
+#output
 def main():
     split = 0.67
     learn_data, test_data = load_dataset(iris, split)
